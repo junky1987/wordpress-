@@ -5,6 +5,7 @@ function my_enqueue_scripts() {
     wp_enqueue_style( 'my_styles', get_template_directory_uri(). '/assets/css/styles.css', array() );
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue_scripts' );
+
 // ヘッダー、フッターのカスタムメニュー化
 
 register_nav_menus(
@@ -13,3 +14,14 @@ register_nav_menus(
         'place_footer' => 'フッターナビ',
     )
 );
+
+// メイン画像上にテンプレート事の文字列を表示
+
+function get_main_title() {
+    if ( is_singular( 'post' ) ):
+        $category_obj = get_the_category();
+        return $category_obj[0]->name;
+    elseif ( is_page() ):
+        return get_the_title();
+    endif;
+}
