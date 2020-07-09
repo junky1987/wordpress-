@@ -27,7 +27,7 @@ if ( have_posts() ):
                         <time class="time"><?php the_time( 'Y.m.d' ); ?></time>
                         <p class='title'><?php the_title(); ?></p>
                         <div class="news-body">
-                          <?php the_contents(); ?>
+                          <?php the_content(); ?>
                         </div>
                       </div>
                       <div class="more-news">
