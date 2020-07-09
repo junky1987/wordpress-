@@ -26,7 +26,15 @@
         </button>
         <div class="header-nav">
           <nav class="global-nav">
-            <ul class="menu">
+<?php
+wp_nav_menu(
+    array (
+        'theme_location' => 'place_global',
+        'container' => false,
+    )
+);
+?>
+            <!-- <ul class="menu"> 
               <li class="menu-item">
                 <a class="nav-link active" href="#">ホーム</a>
               </li>
@@ -45,7 +53,7 @@
               <li class="menu-item">
                 <a class="nav-link" href="#">お問い合わせ</a>
               </li>
-            </ul>
+            </ul>-->
           </nav>
           <form class="search-form" role="search" method="get" action="">
             <div class="search-box">
