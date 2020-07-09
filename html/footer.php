@@ -38,7 +38,15 @@
         </div>
         <div class="footerContents-sitemap">
           <nav class="footer-nav">
-            <ul class="menu">
+        <?php
+        wp_nav_menu(
+            array (
+              'theme_location' => 'place_footer',
+              'container' => false,
+            )
+        );
+        ?>
+            <!-- <ul class="menu"> 
               <li class="menu-item">
                 <a class="nav-link" href="#">企業情報</a>
               </li>
@@ -63,7 +71,7 @@
               <li class="menu-item">
                 <a class="nav-link" href="#">お問い合わせ</a>
               </li>
-            </ul>
+            </ul>-->
           </nav>
         </div>
       </div>
