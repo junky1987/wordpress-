@@ -14,182 +14,43 @@
   <script type="text/javascript" src="./assets/js/bundle.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header id="header">
-      <div class="header-inner">
-        <div class="logo">
-          <a class="logo-header" href="/">
-            <img src="./assets/images/common/logo-main.svg" class="main-logo" alt="PACIFIC MALL DEVELOPMENT" />
-            <img src="./assets/images/common/logo-fixed.svg" class="fixed-logo" alt="PACIFIC MALL DEVELOPMENT" />
-          </a>
-        </div>
-        <button class="toggle-menu js-toggoleNav">
-          <span class="toggle-line">メニュー</span>
-        </button>
-        <div class="header-nav">
-          <nav class="global-nav">
-            <ul class="menu">
-              <li class="menu-item">
-                <a class="nav-link active" href="#">ホーム</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">企業情報</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">店舗情報</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">地域貢献活動</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">ニュースリリース</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">お問い合わせ</a>
-              </li>
-            </ul>
-          </nav>
-          <form class="search-form" role="search" method="get" action="">
-            <div class="search-box">
-              <input type="text" class="search-input" name="" placeholder="キーワードを入力してください" />
-              <button type="submit" class="button-submit"></button>
-            </div>
-            <div class="search-buttons">
-              <button type="button" class="close-icon js-searchIcon"></button>
-              <button type="button" class="search-icon js-searchIcon"></button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </header>
-    <div class="wrap">
-      <div id="primary" class="content-area">
-        <main>
-          <div class="page-contents">
-            <div class="page-head">
-              <img src="./assets/images/bg-page-company.jpg" alt="" />
-              <div class="wrapper">
-                <span class="page-title-en"></span>
-                <h2 class="page-title">企業情報</h2>
-              </div>
-            </div>
-            <div class="page-container">
+<?php get_header(); ?>
 			  <div class="page-inner">
-                <div class="page-main" id="pg-common">
-                  <ul class="commons">
+          <div class="page-main" id="pg-common">
+            <ul class="commons">
+<?php
+$parent_id = get_the_ID();
+$args = array(
+    'posts_per_page' => -1,
+    'post_type'  => 'page',
+    'orderby' => 'menu_order',
+    'order' => 'ASC',
+    'post_parent' => $parent_id,
+);
+$common_pages = new WP_Query( $args );
+if( $common_pages->have_posts() ): 
+    while( $common_pages->have_posts() ): $common_pages->the_post();
+?>
                     <li class="common-item">
-                      <a class="common-link" href="#">
-                        <div class="common-image">
-                          <img src="#" alt="" />
-                        </div>
+                      <a class="common-link" href="<?php the_permalink(); ?>">
+                        <div class="common-image"><?php the_post_thumbnail(); ?></div>
                         <div class="common-body">
-                          <p class="name">会社概要</p>
-                          <p class="caption">私たちパシフィックモール開発は 世界各地のショッピングモール開発を通じて 人と人...</p>
+                          <p class="name"><?php the_title(); ?></p>
+                          <p class="caption"><?php echo get_the_excerpt(); ?></p>
                           <div class="buttonBox">
                             <button type="button" class="seeDetail">MORE</button>
                           </div>
                         </div>
                       </a>
                     </li>
-                    <li class="common-item">
-                      <a class="common-link" href="#">
-                        <div class="common-image">
-                          <img src="#" alt="" />
-                        </div>
-                        <div class="common-body">
-                          <p class="name">事業紹介</p>
-                          <p class="caption">私どもパシフィックモール開発株式会社は、創業より一貫して、東南アジア・太平洋地域...</p>
-                          <div class="buttonBox">
-                            <button type="button" class="seeDetail">MORE</button>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="common-item">
-                      <a class="common-link" href="#">
-                        <div class="common-image">
-                          <img src="#" alt="" />
-                        </div>
-                        <div class="common-body">
-                          <p class="name">沿革</p>
-                          <p class="caption">2000年1月 パシフィックモール開発株式会社を東京都港区に設立、商業施設の開発...</p>
-                          <div class="buttonBox">
-                            <button type="button" class="seeDetail">MORE</button>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="common-item">
-                      <a class="common-link" href="#">
-                        <div class="common-image">
-                          <img src="#" alt="" />
-                        </div>
-                        <div class="common-body">
-                          <p class="name">アクセス</p>
-                          <p class="caption">住所 〒100-0000東京都千代田区大手町0-1-2 パシフィックモールビルデ...</p>
-                          <div class="buttonBox">
-                            <button type="button" class="seeDetail">MORE</button>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> <!-- #page-container -->
-          </div><!-- #page-contents -->
-        </main>
-      </div><!-- #primary -->
-    </div><!-- .wrap -->
-    <footer class="footer" id="footer">
-      <div class="footerContents">
-        <div class="footerContents-contact">
-          <div class="enterprise-logo">
-            <img src="./assets/images/svg/logo-footer.svg" alt="PACIFIC MALL DEVELOPMENT" />
-          </div>
-          <div class="enterprise-detail">
-            <p class="name">パシフィックモール開発株式会社</p>
-            <p class="address">
-              東京都千代田区大手町0-1-2<br />
-              パシフィックモールビルディング18F 
-            </p>
-          </div>
-        </div>
-        <div class="footerContents-sitemap">
-          <nav class="footer-nav">
-            <ul class="menu">
-              <li class="menu-item">
-                <a class="nav-link" href="#">企業情報</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">会社概要</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">事業紹介</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">沿革</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">店舗情報</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">地域貢献活動</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">ニュースリリース</a>
-              </li>
-              <li class="menu-item">
-                <a class="nav-link" href="#">お問い合わせ</a>
-              </li>
+<?php
+    endwhile;
+    wp_reset_postdata();
+  endif;
+  ?>
             </ul>
-          </nav>
+          </div>
         </div>
-      </div>
-      <p class="copyright">
-        <small class="copyright-text">&#169; 2019 PACIFIC MALL DEVELOPMENT CO.,LTD.</small>
-      </p>
-    </footer>
-  </div><!-- /.container -->
+<?php get_footer(); ?>
 </body>
 </html>
