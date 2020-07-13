@@ -22,10 +22,10 @@
                         </div>
                       </div>
                       <div class="more-news">
-                        <div class="next">
+                        <div class="prev">
                           <a class="another-link" href="#">NEXT</a>
                         </div>
-                        <div class="prev">
+                        <div class="next">
                           <a class="another-link" href="#">PREV</a>
                         </div>
                       </div>
